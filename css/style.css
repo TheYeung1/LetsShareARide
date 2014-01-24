@@ -18,5 +18,5 @@ body {
     top:0;
     left:0;
     right:0;
-    /*margin-top: NAVBAR HEIGHT px; Set margin to your navbar height */
+    margin-top: 50px; /* Set margin to your navbar height */
 }
