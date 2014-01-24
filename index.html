@@ -1,19 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-  </head>
-  <body>
-    <div id="map-canvas"/>
+    <head>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbartop">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarlinks"></button>
+                <!--<a href="#">THIS DOES SOMETHINGS</a> no idea what though -->
+            </div>
+            <div class="collapse navbar-collapse" id="navbarlinks">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Dustin</a></li>
+                    <li><a href="#">Winston</a></li>
+                    <li><a href="#">Matthew</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container fill">
+            <div id="map-canvas"/>
+        </div>
     
-    <!-- JAVASCRIPT -->
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnXTiYI_7isboqG4sYlyqZWcXLoL9IOL4&sensor=true">
-    </script>
-    <script type="text/javascript" src="./js/gmaps.js"></script>
-    <script type="text/javascript">
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-  </body>
+        <!-- JAVASCRIPT -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnXTiYI_7isboqG4sYlyqZWcXLoL9IOL4&sensor=true">
+        </script>
+        <script type="text/javascript"
+                src="./js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./js/gmaps.js"></script>
+        <script type="text/javascript">
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+    </body>
 </html>
