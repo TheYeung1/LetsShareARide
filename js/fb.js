@@ -39,6 +39,8 @@
             alert("User cancelled the Facebook login or did not fully authorize.");
           }
         });
+        console.log("not authorized");
+        testAPI();
     } else {
       // In this case, the person is not logged into Facebook, so we call the login() 
       // function to prompt them to do so. Note that at this stage there is no indication
