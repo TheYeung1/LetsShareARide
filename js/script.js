@@ -20,11 +20,64 @@ $(document).ready(function(){
                   );
                 }
               })
-            }
+            };
           },
           error: function(error){
             console.log(error);
           }
+        })
+    });
+    $('#availableDrivers').change(function(){
+        $('#seatsAvailable').text('Getting Number of seats available...')
+        var Drivers = Parse.Object.extend('Driver');
+        var query = new Parse.Query(Drivers);
+        query.equalTo('objectId', $('#riderEventSelect').val());
+        query.equalTo('eventID', $('#riderEventSelect').val());
+        query.find({
+            success: function(result){
+                var totalSeats =  result.get("Seats");
+                var rideQuery = new Parse.Query(Parse.Object.extend('RidingWith'));
+                rideQuery.equalTo('DriverID', $('#availableDrivers').val());
+                rideQuery.equalTo('EventID', $('#riderEventSelect').val());
+                rideQuery.find({
+                    success: function(results){
+                        remainingSeats = totalSeats - results.length;
+                        $('#seatsAvailable').text('Remaining seats ' + remainingSeats);
+                    }
+                });
+            }
+        });
+    });
+    $('#riderSignUpSumit').on('click', function(){
+        var fbEventID = $('#riderEventSelect').val();
+        var driverID = $('#availableDrivers').val();
+        var rWith = Parse.Object.extend(RidingWith);
+        var q = new Parse.Query(rWith);
+        q.equalTo('DriverID', driverID);
+        q.equalTo('EventID', fbEventID);
+        q.equalTo('PassengerID', Parse.User.current().id);
+        q.first({
+            success: function(object){
+                if (object){
+                    console.log('user already signed up for this ride');
+                    // add prompt to user
+                } else {
+                    var ride = new rWith();
+                    ride.set('DriverID', driverID);
+                    ride.set('EventID', fbEventID);
+                    ride.set('PassengerID', Parse.User.current().id);
+                    ride.save(null,{
+                        success: function(response){
+                            console.log("woohoo");
+                            $('.modal').modal('hide');
+                        },
+                        error: function(error){
+                            console.log('shit');
+                            console.log(error);
+                        }
+                    });
+                }
+            }
         })
     });
     $('#driverSignUpSubmit').on('click', function(){
