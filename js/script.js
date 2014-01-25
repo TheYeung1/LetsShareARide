@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(window).load(function(){
     if($("#EventsDropdown").children().length == 0){
         getAndLoadEvents();
     }
