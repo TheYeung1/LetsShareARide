@@ -75,7 +75,15 @@ function mapEvent(eventID){
       if (response.venue){
           /*var content = "<h1>" + response.name + "</h1>" + "<br>" + "<p>" + response.description + "</p>"
           var location =  new google.maps.LatLng(response.venue.latitude, response.venue.longitude)*/
-          drawMarker(content, location);
+          //drawMarker(content, location);
+          var lat = response.venue.latitude;
+          var lng = response.venue.longitude;
+          var latlng = new google.maps.LatLng(lat, lng);
+          var marker = new google.maps.Marker({
+              position: latlng,
+              map: map,
+              title: response.name
+          });
       }
     }
   )
