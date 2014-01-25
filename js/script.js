@@ -203,6 +203,7 @@ function populate(userId, eventID){
     });
     console.log("1");
     while(!driver || !destination){
+        console.log("me loop");
         continue;
     }
 
