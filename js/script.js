@@ -24,7 +24,7 @@ $(document).ready(function(){
         var Drivers = Parse.Object.extend('Driver');
         var query = new Parse.Query(Drivers);
         query.equalTo('eventID', fbEventID);
-        query.equalTo('DriverID', Parse.Users.current());
+        query.equalTo('DriverID', Parse.User.current());
         // check if this user already signed up for this ride, if they did then ya
         query.first({
           success: function(object){
@@ -33,7 +33,7 @@ $(document).ready(function(){
                 // add a prompr for user
               } else {
                 var newRide = new Drivers();
-                newRide.set('DriverID', Parse.Users.current());
+                newRide.set('DriverID', Parse.User.current());
                 newRide.set('eventID', fbEventID);
                 newRide.set('Seats', numSeats);
                 newRide.save(null, {
