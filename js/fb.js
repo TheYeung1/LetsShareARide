@@ -117,6 +117,7 @@ function eventGoerMarkers(eventID){
           var object = result[i];
           var drlat = object.get('startLat');
           var drlng = object.get('startLng');
+          console.log(drlat + ", " + drlng);
           var drlatlng = new google.maps.LatLng(drlat, drlng);
           var marker = new google.maps.Marker({
               position: drlatlng,
