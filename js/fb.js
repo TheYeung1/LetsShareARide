@@ -151,6 +151,14 @@ function plantMarker(latlng) {
       visible: true
     });
     marker.setMap(map);
+
+    var info = new google.maps.InfoWindow({
+            content: "Driverorsomething"
+         });
+
+    google.maps.event.addListener(marker, 'click', function() {
+        info.open(this.map, marker);
+      });
 }
 /*
 Gets event from parse if it exists, if not then adds it
