@@ -46,6 +46,7 @@ function getAndLoadEvents(){
     function (response) {
       if (response && !response.error) {
         userEvents = response.data;
+        mapEvent(response);
         loadEvents();
       }
     }
