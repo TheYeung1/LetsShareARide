@@ -58,6 +58,19 @@ function loadEvents(){
   }
 }
 
+function mapEvent(eventID){
+  FB.api(
+    "/" + eventID,
+    function(response){
+      if (response.venue){
+          var content = "<h1>" + response.name + "</h1>" + "<br>" + "<p>" + response.description + "</p>"
+          var location =  new google.maps.LatLng(response.venue.latitude, response.venue.longitude)
+          drawMarker(content, location);
+      }
+    }
+  )
+}
+
 function testAPI() {
   /*FB.Event.unsubscribe('auth.authResponseChange', function(response) {
     console.log(response);
