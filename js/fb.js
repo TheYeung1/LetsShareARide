@@ -64,7 +64,7 @@ function loadEvents(){
       $(".EventsDropdownForm").append(
         '<option value="' + userEvents[i].id +'">' + userEvents[i].name + '</option>')
       getEvent(userEvents[i].id);
-      //mapEvent(userEvents[i].id);
+      mapEvent(userEvents[i].id);
   }
 }
 
@@ -73,9 +73,17 @@ function mapEvent(eventID){
     "/" + eventID,
     function(response){
       if (response.venue){
-          var content = "<h1>" + response.name + "</h1>" + "<br>" + "<p>" + response.description + "</p>"
-          var location =  new google.maps.LatLng(response.venue.latitude, response.venue.longitude)
-          drawMarker(content, location);
+          /*var content = "<h1>" + response.name + "</h1>" + "<br>" + "<p>" + response.description + "</p>"
+          var location =  new google.maps.LatLng(response.venue.latitude, response.venue.longitude)*/
+          //drawMarker(content, location);
+          var lat = response.venue.latitude;
+          var lng = response.venue.longitude;
+          var latlng = new google.maps.LatLng(lat, lng);
+          var marker = new google.maps.Marker({
+              position: latlng,
+              map: map,
+              title: response.name
+          });
       }
     }
   )
