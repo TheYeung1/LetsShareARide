@@ -156,7 +156,7 @@ function populate(userId, eventID){
     var destination;
 
     driverquery.equalTo('DriverID', userId);
-    driverquery.find({
+    driverquery.first({
       success: function(result) {
           console.log(result);
           var object = result;
