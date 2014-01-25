@@ -83,8 +83,13 @@ function createMarker(place) {
     position: place.geometry.location
   });
 
-  google.maps.event.addListener(marker, 'click', function() {
+  /*google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(place.name);
     infowindow.open(map, this);
-  });
+  });*/
+}
+
+function panTo(location) {
+    map.setZoom(17);
+    map.panTo(location);
 }
