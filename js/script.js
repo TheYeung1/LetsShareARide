@@ -48,10 +48,10 @@ $(document).ready(function(){
             }
         });
     });
-    $('#riderSignUpSumit').on('click', function(){
+    $('#riderSignUpSubmit').on('click', function(){
         var fbEventID = $('#riderEventSelect').val();
         var driverID = $('#availableDrivers').val();
-        var rWith = Parse.Object.extend(RidingWith);
+        var rWith = Parse.Object.extend('RidingWith');
         var q = new Parse.Query(rWith);
         q.equalTo('DriverID', driverID);
         q.equalTo('EventID', fbEventID);
