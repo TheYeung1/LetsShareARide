@@ -17,14 +17,12 @@ window.fbAsyncInit = function() {
     xfbml      : true  // parse XFBML
   });
 
-    var loginstatus = FB.getLoginStatus();
-    console.log(loginstatus);
-FB.Event.subscribe('auth.statusChange', function(response) {
+  var loginstatus = FB.getLoginStatus();
+  console.log(loginstatus);
+  FB.Event.subscribe('auth.statusChange', function(response) {
     console.log("statusChange");
     logInFB();
-});
-
-
+  });
 };
 
 function logInFB() {
@@ -76,8 +74,8 @@ function mapEvent(eventID){
           /*var content = "<h1>" + response.name + "</h1>" + "<br>" + "<p>" + response.description + "</p>"
           var location =  new google.maps.LatLng(response.venue.latitude, response.venue.longitude)*/
           //drawMarker(content, location);
-          var lat = parseFloat(response.venue.latitude.toFixed(5));
-          var lng = parseFloat(response.venue.longitude.toFixed(5));
+          var lat = parseFloat(response.venue.latitude);
+          var lng = parseFloat(response.venue.longitude);
           console.log(lat + "," + lng);
           var latlng = new google.maps.LatLng(lat, lng);
           var marker = new google.maps.Marker({
@@ -163,6 +161,7 @@ function testAPI() {
 }
 
 function selDriverDrop(id) {
+  console.log("Button clicked: " + id);
   var options = $('#driverSignUpForm').children('select').children('option');
   var option = options.find("[value='" + id + "']");
    //alert(option.attr("value")); //undefined
