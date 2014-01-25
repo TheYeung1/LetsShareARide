@@ -199,15 +199,13 @@ function populate(userId, eventID){
             var rilatlng = new google.maps.LatLng(rilat, rilng);
             destination = rilatlng;
             plantMarker(rilatlng);
+
+            findBestPathFromScratch(driver, pickUps, destination);
         }
     });
     console.log("1");
-    while(!driver || !destination){
-        console.log("me loop");
-        continue;
-    }
 
-    findBestPathFromScratch(driver, pickUps, destination);
+    
     console.log("2");
     var paths = [driver].concat(pickUps).push(destination);
     console.log("3");
