@@ -77,19 +77,19 @@
     });
       
     FB.api(
-    "/me/events",
-    function (response) {
-      if (response && !response.error) {
-        /* handle the result */
-        console.log(response);
-      }
-    }
-        
-    var currentUser = Parse.User.current();
+        "/me/events",
+        function (response) {
+          if (response && !response.error) {
+            /* handle the result */
+            console.log(response);
+          }
+        }
+    );
+  
+  var currentUser = Parse.User.current();
     if (currentUser) {
         console.log(currentUser);
     } else {
         console.log("no user!");
     }
-);
   }
