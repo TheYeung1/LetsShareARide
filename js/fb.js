@@ -61,7 +61,7 @@ function loadEvents(){
       $(".EventsDropdownForm").append(
         '<option value="' + userEvents[i].id +'">' + userEvents[i].name + '</option>')
       getEvent(userEvents[i].id);
-      mapEvent(userEvents[i].id);
+      //mapEvent(userEvents[i].id);
   }
 }
 
