@@ -1,4 +1,9 @@
 $(document).ready(function(){
+    if($("#EventsDropdown").length == 0){
+        getAndLoadEvents();
+    }
+
+
     $('#riderEventSelect').change(function(){
         $('#availableDrivers').empty();
         var Drivers = Parse.Object.extend('Driver');
