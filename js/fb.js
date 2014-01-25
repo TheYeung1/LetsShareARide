@@ -95,7 +95,6 @@ function mapEvent(eventID){
           });
 
           google.maps.event.addListener(marker, 'click', function() {
-            map.panTo(marker);
             info.open(map, marker);
           });
       }
