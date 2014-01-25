@@ -203,8 +203,8 @@ function populate(userId, eventID){
     console.log("1");
     findBestPathFromScratch(driver, pickUps, destination);
     console.log("2");
-    var paths = [driver].concat(pickUps, [destination]);
-
+    var paths = [driver].concat(pickUps).push(destination);
+    console.log("3");
 
 
 }
