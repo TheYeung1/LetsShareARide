@@ -1,33 +1,5 @@
-  window.fbAsyncInit = function() {
-  Parse.FacebookUtils.init({
-    appId      : '636325306434470',
-    status     : true, // check login status
-    cookie     : true, // enable cookies to allow the server to access the session
-    xfbml      : true  // parse XFBML
-  });
+  
 
-    
-      
-    Parse.FacebookUtils.logIn(null, {
-          success: function(user) {
-            if (!user.existed()) {
-              alert("User signed up and logged in through Facebook! THIS CAME OUT OF NOWHERE");
-              testAPI();
-            } else {
-              alert("User logged in through Facebook! THIS CAME OUT OF NOWHERE");
-            }
-          },
-          error: function(user, error) {
-            alert("User cancelled the Facebook login or did not fully authorize. THIS CAME OUT OF NOWHERE");
-          }
-        });
-    console.log("not authorized");
-   FB.init({
-      appId      : '636325306434470',
-      status     : true,
-      cookie     : true,
-      xfbml      : true
-    });
   // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
   // for any authentication related change, such as login, logout or session refresh. This means that
   // whenever someone who was previously logged out tries to log in again, the correct case below 
@@ -101,7 +73,6 @@
         });
     }
   });
-  };
 
   // Load the SDK asynchronously
   (function(d){
@@ -111,6 +82,14 @@
    js.src = "//connect.facebook.net/en_US/all.js";
    ref.parentNode.insertBefore(js, ref);
   }(document));
+
+window.fbAsyncInit = function() {
+  Parse.FacebookUtils.init({
+    appId      : '636325306434470',
+    status     : true, // check login status
+    cookie     : true, // enable cookies to allow the server to access the session
+    xfbml      : true  // parse XFBML
+  })};
 
   // Here we run a very simple test of the Graph API after login is successful. 
   // This testAPI() function is only called in those cases. 
