@@ -58,7 +58,7 @@ function getAndLoadEvents(){
 function loadEvents(){
   for (var i = 0; i < userEvents.length; i++){
       $("#EventsDropdown").append('<li>' + userEvents[i].name + '</li>');
-      getEvent(eventID);
+      getEvent(userEvents[i].id);
       mapEvent(userEvents[i].id);
   }
 }
@@ -88,6 +88,7 @@ function getEvent(eventID){
       if(object){
         // yay object is in db
         // do stuff
+        console.log("yay i am in db");
       } else { // object not in db, must add.
         var newEvent = new Events();
         newEvent.set("eventID", eventID);
