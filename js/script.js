@@ -36,7 +36,7 @@ $(document).on('click', '.beadriver', function(event) {
     var options = $('#driverSignUpForm').children('select').children('option');
     var option = options.find("[value='" + eID + "']");
     //alert(option.attr("value")); //undefined
-    option.attr('selected', 'selected');
+    option.prop('selected', true);
 });
 
 function getEventObject(eventID){
