@@ -28,6 +28,13 @@ $(document).ready(function(){
         })
     });
     $('#driverSignUpSubmit').on('click', driverSignUp(null));
+    $('.beadriver').on('click', function() {
+        var eID = $(this).data('id');
+        var options = $('#driverSignUpForm').children('select').children('option');
+        var option = options.find("[value='" + eID + "']");
+        //alert(option.attr("value")); //undefined
+        option.attr('selected', 'selected');
+    });
 });
 
 function getEventObject(eventID){
