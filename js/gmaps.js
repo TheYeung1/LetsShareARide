@@ -16,10 +16,10 @@ function initialize() {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
-        var marker = new google.maps.Marker({
-            position: pos,
-            map: map,
-        })
+        // var marker = new google.maps.Marker({
+        //     position: pos,
+        //     map: map,
+        // })
         
         var infowindowOptions = {
             content: 'You are here'
@@ -27,9 +27,9 @@ function initialize() {
         
         var infowindow = new google.maps.InfoWindow(infowindowOptions);
         
-        google.maps.event.addListener(marker, 'click', function(){
-            infowindow.open(map, marker);
-        });
+        // google.maps.event.addListener(marker, 'click', function(){
+        //     infowindow.open(map, marker);
+        // });
 
       map.setCenter(pos);
     }, function() {
@@ -65,6 +65,15 @@ function drawMarker(content, position){
   };
 
   var infowindow = new google.maps.InfoWindow(options);
+
+  var marker = new google.maps.Marker({
+      position: position,
+      map: map,
+   })
+
+  google.maps.event.addListener(marker, 'click', function(){
+       infowindow.open(map, marker);
+ });
 }
 
 function createMarker(place) {
