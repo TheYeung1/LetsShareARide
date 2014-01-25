@@ -89,7 +89,7 @@ $(window).load(function(){
     });  
     $('#calculateRouteSubmit').on('click', function(){
         var fbEventID = $('#routeEventSelect').val();
-        populate(fbEventID, Parse.User.current().id);
+        populate(Parse.User.current().id, fbEventID);
         $('.modal').modal('hide');
     });
     $('#driverSignUpSubmit').on('click', driverSignUp(null));
