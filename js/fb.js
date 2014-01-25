@@ -17,7 +17,10 @@ window.fbAsyncInit = function() {
     xfbml      : true  // parse XFBML
   });
 
+    var loginstatus = FB.getLoginStatus();
+    console.log(loginstatus);
 FB.Event.subscribe('auth.statusChange', function(response) {
+    console.log("statusChange");
     logInFB();
 });
 
