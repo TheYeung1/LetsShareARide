@@ -35,7 +35,7 @@ $(document).ready(function(){
         query.equalTo('eventID', $('#riderEventSelect').val());
         query.first({
             success: function(object){
-                var totalSeats =  result.get("Seats");
+                var totalSeats =  object.get("Seats");
                 var rideQuery = new Parse.Query(Parse.Object.extend('RidingWith'));
                 rideQuery.equalTo('DriverID', $('#availableDrivers').val());
                 rideQuery.equalTo('EventID', $('#riderEventSelect').val());
