@@ -108,8 +108,8 @@ function eventGoerMarkers(eventID){
     var riders = Parse.Object.extend('RidingWith');
     var driverquery = new Parse.Query(drivers);
     var riderquery = new Parse.Query(riders);
-    drivequery.equalTo('eventID', eID);
-    drivequery.find({
+    driverquery.equalTo('eventID', eID);
+    driverquery.find({
       success: function(result) {
         for (var i = 0; i < result.length; i++) {
           var drlat = result[i].get('startLat');
