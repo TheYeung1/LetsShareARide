@@ -224,5 +224,31 @@ function populate(userId, eventID){
 }
 
 function drawRoute(coordinates, orderOfRoute){
+    //Intialize the Path Array
+    var path = new google.maps.MVCArray();
 
+    //Intialize the Direction Service
+    var service = new google.maps.DirectionsService();
+
+    //Set the Path Stroke Color
+    var poly = new google.maps.Polyline({ map: map, strokeColor: '#4986E7' });
+
+    //Loop and Draw Path Route between the Points on MAP
+    for (var i = 0; i < orderOfRoute.length - 1; i++) {
+        var src = coordinates[orderOfRoute[i]];
+        var des = coordinates[orderOfRoute[i + 1]];
+        path.push(src);
+        poly.setPath(path);
+        service.route({
+            origin: src,
+            destination: des,
+            travelMode: google.maps.DirectionsTravelMode.DRIVING
+        }, function (result, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+                    path.push(result.routes[0].overview_path[i]);
+                }
+            }
+        });
+    }
 }

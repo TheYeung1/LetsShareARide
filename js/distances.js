@@ -37,6 +37,8 @@ function callback(response, status) {
     }
 
     bestPath = mostEfficientPath(locationArray[0], pickups, locationArray[locationArray.length - 1]);
+
+    drawRoute(locationArray,bestPath);
   }
 }
 
