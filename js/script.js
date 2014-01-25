@@ -20,7 +20,7 @@ $(document).ready(function(){
     });
     $('#driverSignUpSubmit').on('click', function(){
         var fbEventID = $('#driverSignUpForm select.EventsDropdownForm').val();
-        var numSeats = $('#driverSignUpForm input').val();
+        var numSeats = parseInt($('#driverSignUpForm input').val());
         var Drivers = Parse.Object.extend('Driver');
         var query = new Parse.Query(Drivers);
         query.equalTo('eventID', fbEventID);
@@ -38,10 +38,11 @@ $(document).ready(function(){
                 newRide.set('Seats', numSeats);
                 newRide.save(null, {
                   success: function(response){
-                    //do stuff
+                    console.log("yay");
                   },
                   error: function(error){
-                    // do stuff
+                    console.log("noo");
+                    console.log(error);
                   }
                 });
               }
