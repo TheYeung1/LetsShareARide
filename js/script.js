@@ -31,8 +31,8 @@ $(document).ready(function(){
 });
 
 $(document).on('click', '.beadriver', function() {
-    console.log("beadriverclicked");
     var eID = $(this).data('id');
+    console.log("beadriverclicked" + eID);
     var options = $('#driverSignUpForm').children('select').children('option');
     var option = options.find("[value='" + eID + "']");
     //alert(option.attr("value")); //undefined
