@@ -119,11 +119,7 @@ function eventGoerMarkers(eventID){
           var drlng = object.get('startLng');
           console.log(drlat + ", " + drlng);
           var drlatlng = new google.maps.LatLng(drlat, drlng);
-          var marker = new google.maps.Marker({
-              position: drlatlng,
-              map: map,
-              title: "Driver"
-          });
+          plantMarker(drlatlng);
         }
       }, 
       error: function(error) {
@@ -138,11 +134,7 @@ function eventGoerMarkers(eventID){
           var rilat = object.get('startLat');
           var rilng = object.get('startLng');
           var rilatlng = new google.maps.LatLng(rilat, rilng);
-          var marker = new google.maps.Marker({
-              position: rilatlng,
-              map: map,
-              title: "Rider"
-          });
+          plantMarker(rilatlng);
         }
       }, 
       error: function(error) {
@@ -151,6 +143,13 @@ function eventGoerMarkers(eventID){
     });
 }
 
+
+function plantMarker(latlng) {
+    var marker = new google.maps.Marker({
+      position: latlng,
+      map: map
+    });
+}
 /*
 Gets event from parse if it exists, if not then adds it
 */
