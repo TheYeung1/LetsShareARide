@@ -6,8 +6,23 @@
     xfbml      : true  // parse XFBML
   });
 
+    
       
-    FB.init({
+    Parse.FacebookUtils.logIn(null, {
+          success: function(user) {
+            if (!user.existed()) {
+              alert("User signed up and logged in through Facebook!");
+              testAPI();
+            } else {
+              alert("User logged in through Facebook!");
+            }
+          },
+          error: function(user, error) {
+            alert("User cancelled the Facebook login or did not fully authorize.");
+          }
+        });
+    console.log("not authorized");
+   /*FB.init({
       appId      : '636325306434470',
       status     : true,
       cookie     : true,
@@ -70,7 +85,7 @@
           }
         });
     }
-  });
+  });*/
   };
 
   // Load the SDK asynchronously
