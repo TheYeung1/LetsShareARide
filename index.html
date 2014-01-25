@@ -28,14 +28,17 @@
                             <li><a href="#">One more separated link</a></li>
                         </ul>
                     </li>
+                    <li><fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button></li>
                 </ul>
             </div>
         </nav>
+        <div id="fb-root"></div>
         <div class="container fill">
             <div id="map-canvas"/>
         </div>
     
         <!-- JAVASCRIPT -->
+        
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="text/javascript"
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnXTiYI_7isboqG4sYlyqZWcXLoL9IOL4&sensor=true">
@@ -46,5 +49,6 @@
         <script type="text/javascript">
             google.maps.event.addDomListener(window, 'load', initialize);
         </script>
+        <script type="text/javascript" src="js/fb.js"></script>
     </body>
 </html>
