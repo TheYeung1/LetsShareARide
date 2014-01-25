@@ -1,9 +1,12 @@
+
 window.fbAsyncInit = function() {
   Parse.FacebookUtils.init({
+
     appId      : '636325306434470',
     status     : true, // check login status
     cookie     : true, // enable cookies to allow the server to access the session
     xfbml      : true  // parse XFBML
+
 })};  
 
 // Load the SDK asynchronously

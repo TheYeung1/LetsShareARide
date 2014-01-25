@@ -15,6 +15,7 @@ $(document).ready(function(){
                 alert("User cancelled the Facebook login or did not fully authorize.");
               }
             });
-        }
+
+        } 
     });
 });
