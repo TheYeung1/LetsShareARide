@@ -31,10 +31,10 @@ $(document).ready(function(){
         $('#seatsAvailable').text('Getting Number of seats available...')
         var Drivers = Parse.Object.extend('Driver');
         var query = new Parse.Query(Drivers);
-        query.equalTo('objectId', $('#availableDrivers').val());
+        query.equalTo('DriverID', $('#availableDrivers').val());
         query.equalTo('eventID', $('#riderEventSelect').val());
         query.first({
-            success: function(result){
+            success: function(object){
                 var totalSeats =  result.get("Seats");
                 var rideQuery = new Parse.Query(Parse.Object.extend('RidingWith'));
                 rideQuery.equalTo('DriverID', $('#availableDrivers').val());
