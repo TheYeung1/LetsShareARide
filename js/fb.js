@@ -84,6 +84,11 @@ function mapEvent(eventID){
               map: map,
               title: response.name
           });
+          
+          var infostring = response.name;
+          var info = new google.maps.InfoWindow({
+              content: infostring
+          });
       }
     }
   )
