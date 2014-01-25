@@ -121,7 +121,7 @@ function eventGoerMarkers(eventID){
           var drlatlng = new google.maps.LatLng(drlat, drlng);
           var marker = new google.maps.Marker({
               position: drlatlng,
-              map: this.map,
+              map: map,
               title: "Driver"
           });
         }
@@ -140,7 +140,7 @@ function eventGoerMarkers(eventID){
           var rilatlng = new google.maps.LatLng(rilat, rilng);
           var marker = new google.maps.Marker({
               position: rilatlng,
-              map: this.map,
+              map: map,
               title: "Rider"
           });
         }
