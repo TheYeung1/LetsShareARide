@@ -16,8 +16,8 @@ $(document).ready(function(){
               }
             });
         } else{
-            Parse.FacebookUtils.logout(function(response){
-                $('#login').text('Log in');
+            FB.logout(function(response){
+               $('#login').text('Log In'); 
             });
         }
     });
