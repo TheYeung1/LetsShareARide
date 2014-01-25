@@ -76,8 +76,8 @@ function mapEvent(eventID){
           /*var content = "<h1>" + response.name + "</h1>" + "<br>" + "<p>" + response.description + "</p>"
           var location =  new google.maps.LatLng(response.venue.latitude, response.venue.longitude)*/
           //drawMarker(content, location);
-          var lat = response.venue.latitude;
-          var lng = response.venue.longitude;
+          var lat = parseFloat(response.venue.latitude.toFixed(5));
+          var lng = parseFloat(response.venue.longitude.toFixed(5));
           console.log(lat + "," + lng);
           var latlng = new google.maps.LatLng(lat, lng);
           var marker = new google.maps.Marker({
