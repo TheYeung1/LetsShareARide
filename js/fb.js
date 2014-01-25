@@ -112,6 +112,7 @@ function eventGoerMarkers(eventID){
     driverquery.equalTo('eventID', eID);
     driverquery.find({
       success: function(result) {
+        console.log(result);
         for (var i = 0; i < result.length; i++) {
           var drlat = result[i].get('startLat');
           var drlng = result[i].get('startLng');
