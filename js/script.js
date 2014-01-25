@@ -31,7 +31,7 @@ $(document).ready(function(){
         $('#seatsAvailable').text('Getting Number of seats available...')
         var Drivers = Parse.Object.extend('Driver');
         var query = new Parse.Query(Drivers);
-        query.equalTo('objectId', $('#riderEventSelect').val());
+        query.equalTo('objectId', $('#availableDrivers').val());
         query.equalTo('eventID', $('#riderEventSelect').val());
         query.first({
             success: function(result){
