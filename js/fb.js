@@ -27,7 +27,6 @@
       // (2) it is a bad experience to be continually prompted to login upon page load.
       Parse.FacebookUtils.logIn(null, {
           success: function(user) {
-            console.log(user);
             if (!user.existed()) {
               alert("User signed up and logged in through Facebook!");
             } else {
@@ -35,7 +34,6 @@
             }
           },
           error: function(user, error) {
-            console.log(user);
             alert("User cancelled the Facebook login or did not fully authorize.");
           }
         });
@@ -47,7 +45,6 @@
       // The same caveats as above apply to the FB.login() call here.
       Parse.FacebookUtils.logIn(null, {
             success: function(user){
-            console.log(user);
             if (!user.existed()) {
               alert("User signed up and logged in through Facebook!");
             } else {
@@ -55,7 +52,6 @@
             }
           },
           error: function(user, error) {
-            console.log(user);
             alert("User cancelled the Facebook login or did not fully authorize.");
           }
         });
@@ -87,6 +83,13 @@
         /* handle the result */
         console.log(response);
       }
+    }
+        
+    var currentUser = Parse.User.current();
+    if (currentUser) {
+        console.log(currentUser);
+    } else {
+        console.log("no user!");
     }
 );
   }
