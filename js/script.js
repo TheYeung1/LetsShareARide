@@ -15,10 +15,6 @@ $(document).ready(function(){
                 alert("User cancelled the Facebook login or did not fully authorize.");
               }
             });
-        } else{
-            FB.logout(function(response){
-               $('#login').text('Log In'); 
-            });
         }
     });
 });
