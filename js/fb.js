@@ -53,8 +53,8 @@ function getAndLoadEvents(){
 }
 
 function loadEvents(){
-  for (var FBevent in userEvents){
-    $("#EventsDropdown").append('<li>' + FBevent.name + '</li>');
+  for (var i = 0; i< userEvents.length; i++){
+    $("#EventsDropdown").append('<li>' + userEvents[i].name + '</li>');
   }
 }
 
