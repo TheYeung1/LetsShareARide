@@ -82,20 +82,20 @@ function mapEvent(eventID){
           var latlng = new google.maps.LatLng(lat, lng);
           var marker = new google.maps.Marker({
               position: latlng,
-              map: map,
+              map: this.map,
               title: response.name
           });
           
           var infostring = '<h3>' + response.name + '</h3>'
             + '<div class="row">'
-            + '<div class="col-md-1"><button type="button" class="btn btn-default">Be a Driver</button></div>'
-            + '<div class="col-md-1"><button type="button" class="btn btn-default">Be a Rider</button></div>';
+            + '<div class="col-md-4"><button type="button" class="btn btn-default">Be a Driver</button></div>'
+            + '<div class="col-md-4"><button type="button" class="btn btn-default">Be a Rider</button></div>';
           var info = new google.maps.InfoWindow({
               content: infostring
           });
 
           google.maps.event.addListener(marker, 'click', function() {
-            info.open(map, marker);
+            info.open(this.map, marker);
           });
       }
     }
