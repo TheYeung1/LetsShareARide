@@ -6,15 +6,6 @@ var origin4 = new google.maps.LatLng(50.087, 14.421);
 var locationArray = [origin1, origin2, origin3, origin4];
 var bestPath;   
 
-function initialize() {
-var mapOptions = {
-  center: new google.maps.LatLng(-34.397, 150.644),
-  zoom: 8
-};
-var map = new google.maps.Map(document.getElementById("map-canvas"),
-    mapOptions);
-}
-
 function calculateDistances() {
   var service = new google.maps.DistanceMatrixService();
   service.getDistanceMatrix(
