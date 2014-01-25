@@ -85,9 +85,17 @@ function mapEvent(eventID){
               title: response.name
           });
           
-          var infostring = response.name;
+          var infostring = '<h3>' + response.name + '</h3>'
+            + '<div class="row">'
+            + '<div class="col-md-1"><button type="button" class="btn btn-default">Be a Driver</button></div>'
+            + '<div class="col-md-1"><button type="button" class="btn btn-default">Be a Rider</button></div>';
           var info = new google.maps.InfoWindow({
               content: infostring
+          });
+
+          google.maps.event.addListener(marker, 'click', function() {
+            map.panTo(marker);
+            info.open(map, marker);
           });
       }
     }
