@@ -147,8 +147,10 @@ function eventGoerMarkers(eventID){
 function plantMarker(latlng) {
     var marker = new google.maps.Marker({
       position: latlng,
-      map: map
+      map: map,
+      visible: true
     });
+    marker.setMap(map);
 }
 /*
 Gets event from parse if it exists, if not then adds it
