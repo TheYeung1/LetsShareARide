@@ -86,7 +86,7 @@ function mapEvent(eventID){
           
           var infostring = '<h3>' + response.name + '</h3>'
             + '<div class="row">'
-            + '<button type="button" class="btn btn-default" id="' + eventID + '" data-toggle="modal" data-target="#driverSignUp" onclick="selDriverDrop($(this).data("id"))">Be a Driver</button>'
+            + '<button type="button" class="btn btn-default" id="' + eventID + '" data-toggle="modal" data-target="#driverSignUp">Be a Driver</button>'
             + '<button type="button" class="btn btn-default">Be a Rider</button>';
           var info = new google.maps.InfoWindow({
               content: infostring
