@@ -18,7 +18,7 @@ window.fbAsyncInit = function() {
  FB.Event.subscribe('auth.statusChange', function(response) {
     // Here we specify what we do with the response anytime this event occurs. 
     if (response.status === 'connected') {
-      Parse.FacebookUtils.logIn(null, {
+      Parse.FacebookUtils.logIn("user_events", {
         success: function(user) {
           if (!user.existed()) {
             console.log("User signed up and logged in through Facebook!");
@@ -33,7 +33,7 @@ window.fbAsyncInit = function() {
         }
       });
     } else if (response.status === 'not_authorized') {
-      Parse.FacebookUtils.logIn(null, {
+      Parse.FacebookUtils.logIn("user_events", {
         success: function(user) {
           if (!user.existed()) {
             console.log("User signed up and logged in through Facebook!");
@@ -48,7 +48,7 @@ window.fbAsyncInit = function() {
         }
       });
     } else {
-      Parse.FacebookUtils.logIn(null, {
+      Parse.FacebookUtils.logIn("user_events", {
         success: function(user) {
           if (!user.existed()) {
             console.log("User signed up and logged in through Facebook!");
@@ -69,7 +69,7 @@ window.fbAsyncInit = function() {
 };
 
 function logInFB() {
-  Parse.FacebookUtils.logIn(null, {
+  Parse.FacebookUtils.logIn("user_events", {
     success: function(user) {
       if (!user.existed()) {
         alert("User signed up and logged in through Facebook!");
