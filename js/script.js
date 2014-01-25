@@ -227,12 +227,11 @@ function populate(userId, eventID){
 
 function calcRoute(coordinates, startLoc, endLoc) {
     var service = new google.maps.DirectionsService();
-    renderer.setMap(map);
     var renderer = new google.maps.DirectionsRenderer();
     var start = startLoc;
     var end = endLoc;
     var wypts = coordinates;
-    
+    renderer.setMap(map);
     var request = {
         origin: start,
         destination: end,
