@@ -61,7 +61,7 @@ function handleNoGeolocation(errorFlag) {
 function drawMarker(content, position){
   var options = {
     map: map,
-    position: position
+    content:content
   };
 
   var infowindow = new google.maps.InfoWindow(options);

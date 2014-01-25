@@ -46,7 +46,6 @@ function getAndLoadEvents(){
     function (response) {
       if (response && !response.error) {
         userEvents = response.data;
-        mapEvent(response);
         loadEvents();
       }
     }
@@ -56,6 +55,7 @@ function getAndLoadEvents(){
 function loadEvents(){
   for (var i = 0; i< userEvents.length; i++){
     $("#EventsDropdown").append('<li>' + userEvents[i].name + '</li>');
+    mapEvent(userEvents[i].id);
   }
 }
 
