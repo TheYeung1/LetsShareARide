@@ -189,7 +189,7 @@ function populate(userId, eventID){
         console.log("Error in finding drivers for this event.");
       }
     });
-
+    console.log("hey");
     eventquery.equalTo('eventID', eventID);
     eventquery.first({
         success: function(object){
@@ -200,8 +200,9 @@ function populate(userId, eventID){
             plantMarker(rilatlng);
         }
     });
-
+    console.log("1");
     findBestPathFromScratch(driver, pickUps, destination);
+    console.log("2");
     var paths = [driver].concat(pickUps, [destination]);
 
 
