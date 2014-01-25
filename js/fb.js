@@ -1,3 +1,5 @@
+var userEvents; // the events of the current user.
+
 // Load the SDK asynchronously
 (function(d){
    var js, id = 'facebook-jssdk';
@@ -15,55 +17,9 @@ window.fbAsyncInit = function() {
     xfbml      : true  // parse XFBML
   });
 
- FB.Event.subscribe('auth.statusChange', function(response) {
-    // Here we specify what we do with the response anytime this event occurs. 
-    if (response.status === 'connected') {
-      Parse.FacebookUtils.logIn("user_events", {
-        success: function(user) {
-          if (!user.existed()) {
-            console.log("User signed up and logged in through Facebook!");
-          } else {
-            console.log("User logged in through Facebook!");
-          }
-          console.log("RESPONSE: connected");
-          testAPI();
-        },
-        error: function(user, error) {
-            console.log("User cancelled the Facebook login or did not fully authorize.");
-        }
-      });
-    } else if (response.status === 'not_authorized') {
-      Parse.FacebookUtils.logIn("user_events", {
-        success: function(user) {
-          if (!user.existed()) {
-            console.log("User signed up and logged in through Facebook!");
-          } else {
-            console.log("User logged in through Facebook!");
-          }
-          console.log("RESPONSE: not_authorized");
-          testAPI();
-        },
-        error: function(user, error) {
-            console.log("User cancelled the Facebook login or did not fully authorize.");
-        }
-      });
-    } else {
-      Parse.FacebookUtils.logIn("user_events", {
-        success: function(user) {
-          if (!user.existed()) {
-            console.log("User signed up and logged in through Facebook!");
-          } else {
-            console.log("User logged in through Facebook!");
-          }
-          console.log("RESPONSE: else");
-          testAPI();
-        },
-        error: function(user, error) {
-          console.log("User cancelled the Facebook login or did not fully authorize.");
-        }
-      });
-    }
-  });
+FB.Event.subscribe('auth.statusChange', function(response) {
+    logInFB();
+});
 
 
 };
@@ -76,11 +32,30 @@ function logInFB() {
       } else {
         alert("User logged in through Facebook!");
       }
+      getAndLoadEvents();
     },
     error: function(user, error) {
       alert("User cancelled the Facebook login or did not fully authorize.");
     }
   });
+}
+
+function getAndLoadEvents(){
+  FB.api(
+    "/me/events",
+    function (response) {
+      if (response && !response.error) {
+        userEvents = response.data;
+        loadEvents();
+      }
+    }
+  );
+}
+
+function loadEvents(){
+  for (var FBevent in userEvents){
+    $("#EventsDropdown").append('<li>' + FBevent.name + '</li>');
+  }
 }
 
 function testAPI() {
