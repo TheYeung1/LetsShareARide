@@ -41,19 +41,20 @@
       // login status of the person. In this case, we're handling the situation where they 
       // have logged in to the app.
       console.log("connected yo");
-        
-        Parse.FacebookUtils.logIn(null, {
-          success: function(user) {
-            if (!user.existed()) {
-              alert("User signed up and logged in through Facebook!");
-            } else {
-              alert("User logged in through Facebook!");
-            }
-          },
-          error: function(user, error) {
-            alert("User cancelled the Facebook login or did not fully authorize.");
-          }
-        });
+        if (!Parse.User.current()){
+            Parse.FacebookUtils.logIn(null, {
+              success: function(user) {
+                if (!user.existed()) {
+                  alert("User signed up and logged in through Facebook!");
+                } else {
+                  alert("User logged in through Facebook!");
+                }
+              },
+              error: function(user, error) {
+                alert("User cancelled the Facebook login or did not fully authorize.");
+              }
+            });
+        }
         console.log("not authorized");
       testAPI();
     } else if (response.status === 'not_authorized') {
