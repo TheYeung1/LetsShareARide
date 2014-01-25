@@ -88,8 +88,8 @@ function mapEvent(eventID){
           
           var infostring = '<h3>' + response.name + '</h3>'
             + '<div class="row">'
-            + '<div class="col-md-4"><button type="button" class="btn btn-default">Be a Driver</button></div>'
-            + '<div class="col-md-4"><button type="button" class="btn btn-default">Be a Rider</button></div>';
+            + '<button type="button" class="btn btn-default">Be a Driver</button>'
+            + '<button type="button" class="btn btn-default">Be a Rider</button>';
           var info = new google.maps.InfoWindow({
               content: infostring
           });

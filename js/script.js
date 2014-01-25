@@ -45,6 +45,8 @@ $(document).ready(function(){
                 newRide.set('DriverID', Parse.User.current().id);
                 newRide.set('eventID', fbEventID);
                 newRide.set('Seats', numSeats);
+                newRide.set('startLat', mylat);
+                newRide.set('startLng', mylng);
                 newRide.save(null, {
                   success: function(response){
                     console.log("yay");
