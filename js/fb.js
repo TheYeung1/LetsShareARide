@@ -114,8 +114,9 @@ function eventGoerMarkers(eventID){
       success: function(result) {
         console.log(result);
         for (var i = 0; i < result.length; i++) {
-          var drlat = result[i].get('startLat');
-          var drlng = result[i].get('startLng');
+          var object = result[i];
+          var drlat = object.get('startLat');
+          var drlng = object.get('startLng');
           var drlatlng = new google.maps.LatLng(drlat, drlng);
           var marker = new google.maps.Marker({
               position: drlatlng,
@@ -132,8 +133,9 @@ function eventGoerMarkers(eventID){
     riderquery.find({
       success: function(result) {
         for (var i = 0; i < result.length; i++) {
-          var rilat = result[i].get('startLat');
-          var rilng = result[i].get('startLng');
+          var object = result[i];
+          var rilat = object.get('startLat');
+          var rilng = object.get('startLng');
           var rilatlng = new google.maps.LatLng(rilat, rilng);
           var marker = new google.maps.Marker({
               position: rilatlng,
