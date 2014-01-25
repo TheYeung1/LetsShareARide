@@ -249,7 +249,7 @@ function calcRoute(coordinates, startLoc, endLoc) {
     });    
 }
 
-function drawRoute(coordinates, orderOfRoute){
+/*function drawRoute(coordinates, orderOfRoute){
     //Intialize the Path Array
     var path = new google.maps.MVCArray();
 
@@ -281,4 +281,4 @@ function drawRoute(coordinates, orderOfRoute){
         });
     }
     plantMarker(coordinates[orderOfRoute[orderOfRoute.length-1]], '<p>' + i + '</p>');
-}
+}*/
