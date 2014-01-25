@@ -39,6 +39,7 @@ $(document).ready(function(){
                 newRide.save(null, {
                   success: function(response){
                     console.log("yay");
+                    $('.modal').modal('hide')
                   },
                   error: function(error){
                     console.log("noo");
