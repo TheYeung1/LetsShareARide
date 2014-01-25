@@ -155,6 +155,7 @@ function populate(userId, eventID){
     var pickUps = new Array();
     var destination;
 
+
     driverquery.equalTo('DriverID', userId);
     driverquery.equalTo('eventID', eventID);
     driverquery.first({
@@ -193,14 +194,15 @@ function populate(userId, eventID){
                     destination = rilatlng;
                     //plantMarker(rilatlng);
 
-                    findBestPathFromScratch(driver, pickUps, destination);
+                    //findBestPathFromScratch(driver, pickUps, destination);
 
-                    console.log("1");
+                    /*console.log("1");
 
             
                     console.log("2");
                     var paths = [driver].concat(pickUps).push(destination);
-                    console.log("3");
+                    console.log("3");*/
+                    calcRoute(pickUps, driver, destination);
                 }
             });
             
@@ -223,6 +225,30 @@ function populate(userId, eventID){
 
 }
 
+function calcRoute(coordinates, startLoc, endLoc) {
+    var service = new google.maps.DirectionsService();
+    renderer.setMap(map);
+    var renderer = new google.maps.DirectionsRenderer();
+    var start = startLoc;
+    var end = endLoc;
+    var wypts = coordinates;
+    
+    var request = {
+        origin: start,
+        destination: end,
+        waypoints: wypts,
+        optimizeWaypoints: true,
+        travelMode: google.maps.TravelMode.DRIVING
+    };
+
+    service.route(request, function(response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            renderer.setDirections(response);
+            var route = response.routes[0];
+        }
+    });    
+}
+
 function drawRoute(coordinates, orderOfRoute){
     //Intialize the Path Array
     var path = new google.maps.MVCArray();
@@ -237,12 +263,14 @@ function drawRoute(coordinates, orderOfRoute){
     for (var i = 0; i < orderOfRoute.length - 1; i++) {
         var src = coordinates[orderOfRoute[i]];
         var des = coordinates[orderOfRoute[i + 1]];
+        var wypts = [];
         plantMarker(coordinates[orderOfRoute[i]], '<p>' + i + '</p>');
         path.push(src);
         poly.setPath(path);
         service.route({
             origin: src,
             destination: des,
+            waypoints: 
             travelMode: google.maps.DirectionsTravelMode.DRIVING
         }, function (result, status) {
             if (status == google.maps.DirectionsStatus.OK) {
@@ -252,4 +280,5 @@ function drawRoute(coordinates, orderOfRoute){
             }
         });
     }
+    plantMarker(coordinates[orderOfRoute[orderOfRoute.length-1]], '<p>' + i + '</p>');
 }
