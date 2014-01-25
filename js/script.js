@@ -30,9 +30,9 @@ $(document).ready(function(){
     $('#driverSignUpSubmit').on('click', driverSignUp(null));
 });
 
-$(document).on('click', '.beadriver', function() {
-    var eID = $(this).data('id');
-    console.log("beadriverclicked" + eID);
+$(document).on('click', '.beadriver', function(event) {
+    var eID = event.target.id;
+    console.log("beadriverclicked " + eID);
     var options = $('#driverSignUpForm').children('select').children('option');
     var option = options.find("[value='" + eID + "']");
     //alert(option.attr("value")); //undefined
