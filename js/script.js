@@ -29,6 +29,7 @@ $(document).ready(function(){
     });
     $('#driverSignUpSubmit').on('click', driverSignUp(null));
     $('.beadriver').on('click', function() {
+        console.log("beadriverclicked");
         var eID = $(this).data('id');
         var options = $('#driverSignUpForm').children('select').children('option');
         var option = options.find("[value='" + eID + "']");
