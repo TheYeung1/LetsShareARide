@@ -26,6 +26,7 @@
       // result from direct interaction from people using the app (such as a mouse click)
       // (2) it is a bad experience to be continually prompted to login upon page load.
       Parse.FacebookUtils.logIn(null, {
+          console.log(user);
           success: function(user) {
             if (!user.existed()) {
               alert("User signed up and logged in through Facebook!");
@@ -45,6 +46,7 @@
       // The same caveats as above apply to the FB.login() call here.
       Parse.FacebookUtils.logIn(null, {
           success: function(user) {
+            console.log(user);
             if (!user.existed()) {
               alert("User signed up and logged in through Facebook!");
             } else {
