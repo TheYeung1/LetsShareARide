@@ -52,10 +52,14 @@ function getAndLoadEvents(){
   );
 }
 
+/*
+ Loads the events into event drop down list and map.
+*/
 function loadEvents(){
-  for (var i = 0; i< userEvents.length; i++){
-    $("#EventsDropdown").append('<li>' + userEvents[i].name + '</li>');
-    mapEvent(userEvents[i].id);
+  for (var i = 0; i < userEvents.length; i++){
+      $("#EventsDropdown").append('<li>' + userEvents[i].name + '</li>');
+      getEvent(eventID);
+      mapEvent(userEvents[i].id);
   }
 }
 
@@ -70,6 +74,38 @@ function mapEvent(eventID){
       }
     }
   )
+}
+
+/*
+Gets event from parse if it exists, if not then adds it
+*/
+function getEvent(eventID){
+  var Events = Parse.Object.extend("Event");
+  var query = new Parse.Query(Events);
+  query.equalTo("eventID", eventID);
+  query.first({
+    success: function(object){
+      if(object){
+        // yay object is in db
+        // do stuff
+      } else { // object not in db, must add.
+        var newEvent = new Events();
+        newEvent.set("eventID", eventID);
+        newEvent.save(null, {
+          success: function(newEvent){
+            // do stuff
+          },
+          error: function(error){
+            // do stuff
+          }
+        })
+      }   
+    },
+    error: function(error){
+      console.log("error!");
+      console.log(error);
+    }
+  })
 }
 
 function testAPI() {
