@@ -1,23 +1,30 @@
-  window.fbAsyncInit = function() {
-  Parse.FacebookUtils.init({
-    appId      : '636325306434470',
-    status     : true, // check login status
-    cookie     : true, // enable cookies to allow the server to access the session
-    xfbml      : true  // parse XFBML
-  });
+    window.fbAsyncInit = function() {
+    Parse.FacebookUtils.init({
+        appId      : '636325306434470',
+        status     : true, // check login status
+        cookie     : true, // enable cookies to allow the server to access the session
+        xfbml      : true  // parse XFBML
+    });
 
       
-    FB.init({
-      appId      : '636325306434470',
-      status     : true,
-      cookie     : true,
-      xfbml      : true
+    Parse.FacebookUtils.logIn(null, {
+      success: function(user) {
+        if (!user.existed()) {
+          console.log("User signed up and logged in through Facebook!");
+            testAPI();
+        } else {
+          console.log("User logged in through Facebook!");
+        }
+      },
+      error: function(user, error) {
+        console.log("User cancelled the Facebook login or did not fully authorize.");
+      }
     });
   // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
   // for any authentication related change, such as login, logout or session refresh. This means that
   // whenever someone who was previously logged out tries to log in again, the correct case below 
   // will be handled. 
-  FB.Event.subscribe('auth.authResponseChange', function(response) {
+  /*FB.Event.subscribe('auth.authResponseChange', function(response) {
     // Here we specify what we do with the response anytime this event occurs. 
     if (response.status === 'connected') {
       // The response object is returned with a status field that lets the app know the current
@@ -35,13 +42,13 @@
       Parse.FacebookUtils.logIn(null, {
           success: function(user) {
             if (!user.existed()) {
-              alert("User signed up and logged in through Facebook!");
+              console.log("User signed up and logged in through Facebook!");
             } else {
-              alert("User logged in through Facebook!");
+              console.log("User logged in through Facebook!");
             }
           },
           error: function(user, error) {
-            alert("User cancelled the Facebook login or did not fully authorize.");
+            console.log("User cancelled the Facebook login or did not fully authorize.");
           }
         });
         console.log("not authorized");
@@ -65,7 +72,7 @@
           }
         });
     }
-  });
+  });*/
   };
 
   // Load the SDK asynchronously
