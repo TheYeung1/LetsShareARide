@@ -3,14 +3,23 @@ $(document).ready(function(){
         $('#availableDrivers').empty();
         var Drivers = Parse.Object.extend('Driver');
         var query = new Parse.Query(Drivers);
+        
         query.equalTo('eventID', $('#riderEventSelect').val());
         query.find({
           success: function(results){
             for (var i = 0; i < results.length; i++) { 
               var driver = results[i];
-              $('#availableDrivers').append(
-                  '<option value=' + driver.objectId + '>' + driver.name + '</object>'
-                );
+              var dID = driver.get("DriverID");
+              var uquery = new Parse.Query(Parse.User);
+
+              uquery.equalTo('objectId', dID);
+              uquery.first({
+                success: function(object){
+                  $('#availableDrivers').append(
+                  '<option value=' + object.id + '>' + object.get('name') + '</object>'
+                  );
+                }
+              })
             }
           },
           error: function(error){
