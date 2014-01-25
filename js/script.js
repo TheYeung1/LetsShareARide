@@ -138,3 +138,76 @@ function driverSignUp(param) {
       }
     });
 }
+
+function populate(userId, eventID){
+    console.log("Event goer running for: " + eventID);
+    var eID = eventID;
+
+    var drivers = Parse.Object.extend('Driver');
+    var riders = Parse.Object.extend('RidingWith');
+    var events = Parse.Object.extend('Event');
+
+    var driverquery = new Parse.Query(drivers);
+    var riderquery = new Parse.Query(riders);
+    var eventquery = new Parse.Query(events);
+
+    var driver;
+    var pickUps = new Array();
+    var destination;
+
+    driverquery.equalTo('DriverID', userId);
+    driverquery.find({
+      success: function(result) {
+          console.log(result);
+          var object = result;
+          var drlat = object.get('startLat');
+          var drlng = object.get('startLng');
+          console.log(drlat + ", " + drlng);
+          var drlatlng = new google.maps.LatLng(drlat, drlng);
+          driver = drlatlng;
+          plantMarker(drlatlng); // should draw on map with user info
+      }, 
+      error: function(error) {
+        console.log("Error in finding drivers for this event.");
+      }
+    });
+
+    riderquery.equalTo('DriverID', userId);
+    riderquery.equalTo('EventID', eID);
+    riderquery.find({
+      success: function(result) {
+        for (var i = 0; i < result.length; i++) {
+          var object = result[i];
+          var rilat = object.get('startLat');
+          var rilng = object.get('startLng');
+          var rilatlng = new google.maps.LatLng(rilat, rilng);
+          pickUps.push(rilatlng);
+          plantMarker(rilatlng); // should draw marker with the user's info like fb picture
+        }
+      }, 
+      error: function(error) {
+        console.log("Error in finding drivers for this event.");
+      }
+    });
+
+    eventquery.equalTo('eventID', eventID);
+    eventquery.first({
+        success: function(object){
+            var rilat = object.get('startLat');
+            var rilng = object.get('startLng');
+            var rilatlng = new google.maps.LatLng(rilat, rilng);
+            destination = rilatlng;
+            plantMarker(rilatlng);
+        }
+    });
+
+    findBestPathFromScratch(driver, pickUps, destination);
+    var paths = [driver].concat(pickUps, [destination]);
+
+
+
+}
+
+function drawRoute(coordinates, orderOfRoute){
+
+}

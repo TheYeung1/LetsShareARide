@@ -16,7 +16,8 @@
       var origin2 = 'Greenwich, England';
       var origin3 = 'Stockholm, Sweden';
       var origin4 = new google.maps.LatLng(50.087, 14.421); 
-      var locationArray = [origin1, origin2, origin3, origin4];    
+      var locationArray = [origin1, origin2, origin3, origin4];
+      var bestPath;   
         
       function initialize() {
         var mapOptions = {
@@ -57,7 +58,7 @@
                 pickups.push(locationArray[i]);
             }
 
-            var bestPath = mostEfficientPath(locationArray[0], pickups, locationArray[locationArray.length - 1]);
+            bestPath = mostEfficientPath(locationArray[0], pickups, locationArray[locationArray.length - 1]);
           }
         }
         

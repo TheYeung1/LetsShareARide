@@ -1,4 +1,6 @@
 var userEvents; // the events of the current user.
+var eventMarkers = new Object();
+
 
 // Load the SDK asynchronously
 (function(d){
@@ -115,26 +117,8 @@ function eventGoerMarkers(eventID){
         console.log(result);
         for (var i = 0; i < result.length; i++) {
           var object = result[i];
-          var drlat = object.get('startLat');
-          var drlng = object.get('startLng');
-          console.log(drlat + ", " + drlng);
-          var drlatlng = new google.maps.LatLng(drlat, drlng);
-          plantMarker(drlatlng);
-        }
-      }, 
-      error: function(error) {
-        console.log("Error in finding drivers for this event.");
-      }
-    });
-    riderquery.equalTo('eventID', eID);
-    riderquery.find({
-      success: function(result) {
-        for (var i = 0; i < result.length; i++) {
-          var object = result[i];
-          var rilat = object.get('startLat');
-          var rilng = object.get('startLng');
-          var rilatlng = new google.maps.LatLng(rilat, rilng);
-          plantMarker(rilatlng);
+          var drID = object.get('DriverID');
+          populate(drID, eID);
         }
       }, 
       error: function(error) {
@@ -142,7 +126,6 @@ function eventGoerMarkers(eventID){
       }
     });
 }
-
 
 function plantMarker(latlng) {
     var marker = new google.maps.Marker({
