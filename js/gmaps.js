@@ -35,7 +35,7 @@ function initialize() {
         //     infowindow.open(map, marker);
         // });
 
-      map.setCenter(pos);
+      map.setCenter(mypos);
     }, function() {
       handleNoGeolocation(true);
     });
