@@ -1,5 +1,5 @@
 $(window).load(function(){
-    if($("#EventsDropdown").length == 0){
+    if($("#EventsDropdown").children().length == 0){
         getAndLoadEvents();
     }
 
