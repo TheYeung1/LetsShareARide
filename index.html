@@ -19,15 +19,21 @@
                         </ul>
                     </li>
                     <li><!-- Button trigger modal -->
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#driverSignUp">
-  Sign up to be a Driver
-</button></li>
+                        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#driverSignUp">
+                          Sign up to be a Driver
+                        </button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#riderSignUp">
+                            Need A Ride
+                        </button>
+                    </li>
                     <li><fb:login-button show-faces="true" width="200" max-rows="1" autologoutlink="true"></fb:login-button></li>
                 </ul>
             </div>
         </nav>
 
-        <!-- Modal -->
+        <!-- Driver Modal -->
         <div class="modal fade" id="driverSignUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -35,8 +41,36 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
               </div>
-              <div class="modal-body">
-                ...
+              <div id="driverSignUpForm" class="modal-body">
+                Event
+                <select class="EventsDropDownForm form-control">
+                </select>
+                Number of seats
+                <input class="form-control"></input>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <!-- Rider Modal-->
+        <div class="modal fade" id="riderSignUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Sign up for a ride</h4>
+              </div>
+              <div id="riderSignUpForm" class="modal-body">
+                <label>Event</label>
+                <select id="riderEventSelect" class="EventsDropDownForm form-control">
+                </select>
+                <label>Available Drivers</label>
+                <select id="availableDrivers"></select>
+                <div id="seatsAvailable">Getting Number of seats available...</div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

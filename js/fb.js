@@ -58,6 +58,8 @@ function getAndLoadEvents(){
 function loadEvents(){
   for (var i = 0; i < userEvents.length; i++){
       $("#EventsDropdown").append('<li>' + userEvents[i].name + '</li>');
+      $(".EventsDropdownForm").append(
+        '<option value="' + userEvents[i].id +'">' + userEvents[i].name + '</option>')
       getEvent(userEvents[i].id);
       mapEvent(userEvents[i].id);
   }
