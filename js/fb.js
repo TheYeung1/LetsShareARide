@@ -53,4 +53,14 @@
     FB.api('/me', function(response) {
       console.log('Good to see you, ' + response.name + '.');
     });
+      
+    FB.api(
+    "/me/events",
+    function (response) {
+      if (response && !response.error) {
+        /* handle the result */
+        console.log(response);
+      }
+    }
+);
   }
