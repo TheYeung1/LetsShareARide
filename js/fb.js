@@ -11,14 +11,14 @@
     Parse.FacebookUtils.logIn(null, {
           success: function(user) {
             if (!user.existed()) {
-              alert("User signed up and logged in through Facebook!");
+              alert("User signed up and logged in through Facebook! THIS CAME OUT OF NOWHERE");
               testAPI();
             } else {
-              alert("User logged in through Facebook!");
+              alert("User logged in through Facebook! THIS CAME OUT OF NOWHERE");
             }
           },
           error: function(user, error) {
-            alert("User cancelled the Facebook login or did not fully authorize.");
+            alert("User cancelled the Facebook login or did not fully authorize. THIS CAME OUT OF NOWHERE");
           }
         });
     console.log("not authorized");
@@ -45,9 +45,9 @@
             Parse.FacebookUtils.logIn(null, {
               success: function(user) {
                 if (!user.existed()) {
-                  alert("User signed up and logged in through Facebook!");
+                  alert("User signed up and logged in through Facebook! RESPONSE IS CONNECTED");
                 } else {
-                  alert("User logged in through Facebook!");
+                  alert("User logged in through Facebook! RESPONSE IS CONNECTED");
                 }
               },
               error: function(user, error) {
@@ -69,9 +69,9 @@
       Parse.FacebookUtils.logIn(null, {
           success: function(user) {
             if (!user.existed()) {
-              alert("User signed up and logged in through Facebook!");
+              alert("User signed up and logged in through Facebook! RESPONSE NOT AUTHORIZED");
             } else {
-              alert("User logged in through Facebook!");
+              alert("User logged in through Facebook! RESPONSE NOT AUTHORIZED");
             }
           },
           error: function(user, error) {
