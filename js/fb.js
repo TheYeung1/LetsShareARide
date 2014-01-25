@@ -78,6 +78,7 @@ function mapEvent(eventID){
           //drawMarker(content, location);
           var lat = response.venue.latitude;
           var lng = response.venue.longitude;
+          console.log(lat + lng);
           var latlng = new google.maps.LatLng(lat, lng);
           var marker = new google.maps.Marker({
               position: latlng,
