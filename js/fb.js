@@ -74,6 +74,7 @@ function mapEvent(eventID){
           /*var content = "<h1>" + response.name + "</h1>" + "<br>" + "<p>" + response.description + "</p>"
           var location =  new google.maps.LatLng(response.venue.latitude, response.venue.longitude)*/
           //drawMarker(content, location);
+          var eID = eventID;
           var lat = parseFloat(response.venue.latitude);
           var lng = parseFloat(response.venue.longitude);
           console.log(lat + "," + lng);
@@ -94,10 +95,55 @@ function mapEvent(eventID){
 
           google.maps.event.addListener(marker, 'click', function() {
             info.open(this.map, marker);
+            eventGoerMarkers(eID);
           });
       }
     }
   )
+}
+
+function eventGoerMarkers(eventID){
+    var eID = eventID;
+    var drivers = Parse.Object.extend('Driver');
+    var riders = Parse.Object.extend('RidingWith');
+    var driverquery = new Parse.Query(drivers);
+    var riderquery = new Parse.Query(riders);
+    drivequery.equalTo('eventID', eID);
+    drivequery.find({
+      success: function(result) {
+        for (var i = 0; i < result.length; i++) {
+          var drlat = result[i].get('startLat');
+          var drlng = result[i].get('startLng');
+          var drlatlng = new google.maps.LatLng(drlat, drlng);
+          var marker = new google.maps.Marker({
+              position: drlatlng,
+              map: this.map,
+              title: "Driver"
+          });
+        }
+      }, 
+      error: function(error) {
+        console.log("Error in finding drivers for this event.");
+      }
+    });
+    riderquery.equalTo('eventID', eID);
+    riderquery.find({
+      success: function(result) {
+        for (var i = 0; i < result.length; i++) {
+          var rilat = result[i].get('startLat');
+          var rilng = result[i].get('startLng');
+          var rilatlng = new google.maps.LatLng(rilat, rilng);
+          var marker = new google.maps.Marker({
+              position: rilatlng,
+              map: this.map,
+              title: "Rider"
+          });
+        }
+      }, 
+      error: function(error) {
+        console.log("Error in finding drivers for this event.");
+      }
+    });
 }
 
 /*

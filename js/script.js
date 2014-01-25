@@ -71,6 +71,8 @@ $(document).ready(function(){
                     ride.set('DriverID', driverID);
                     ride.set('EventID', fbEventID);
                     ride.set('PassengerID', Parse.User.current().id);
+                    ride.set('startLat', mylat);
+                    ride.set('startLng', mylng);
                     ride.save(null,{
                         success: function(response){
                             console.log("woohoo");
