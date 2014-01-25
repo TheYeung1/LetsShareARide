@@ -131,12 +131,12 @@ function plantMarker(latlng, content) {
     var marker = new google.maps.Marker({
       position: latlng,
       map: map,
-      visible: true
+      visible: true,
     });
     marker.setMap(map);
 
     var info = new google.maps.InfoWindow({
-            content: "Driverorsomething"
+            content: content
          });
 
     google.maps.event.addListener(marker, 'click', function() {
