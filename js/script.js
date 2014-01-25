@@ -113,9 +113,9 @@ $(document).ready(function(){
               }
           }
         })
-    })
+    });  
+    $('#driverSignUpSubmit').on('click', driverSignUp(null));
 });
-$('#driverSignUpSubmit').on('click', driverSignUp(null));
 
 $(document).on('click', '.beadriver', function(event) {
     var eID = event.target.id;
