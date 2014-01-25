@@ -103,6 +103,7 @@ function mapEvent(eventID){
 }
 
 function eventGoerMarkers(eventID){
+    console.log("Event goer running for: " + eventID);
     var eID = eventID;
     var drivers = Parse.Object.extend('Driver');
     var riders = Parse.Object.extend('RidingWith');
