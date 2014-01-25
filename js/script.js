@@ -167,48 +167,58 @@ function populate(userId, eventID){
           var drlatlng = new google.maps.LatLng(drlat, drlng);
           driver = drlatlng;
           plantMarker(drlatlng); // should draw on map with user info
+
+
+
+        riderquery.equalTo('DriverID', userId);
+        riderquery.equalTo('EventID', eID);
+        riderquery.find({
+          success: function(result) {
+            for (var i = 0; i < result.length; i++) {
+              var object = result[i];
+              var rilat = object.get('startLat');
+              var rilng = object.get('startLng');
+              var rilatlng = new google.maps.LatLng(rilat, rilng);
+              pickUps.push(rilatlng);
+              plantMarker(rilatlng); // should draw marker with the user's info like fb picture
+            }
+
+            console.log("hey");
+            eventquery.equalTo('eventID', eventID);
+            eventquery.first({
+                success: function(object){
+                    var rilat = object.get('startLat');
+                    var rilng = object.get('startLng');
+                    var rilatlng = new google.maps.LatLng(rilat, rilng);
+                    destination = rilatlng;
+                    plantMarker(rilatlng);
+
+                    findBestPathFromScratch(driver, pickUps, destination);
+
+                    console.log("1");
+
+            
+                    console.log("2");
+                    var paths = [driver].concat(pickUps).push(destination);
+                    console.log("3");
+                }
+            });
+            
+
+
+          }, 
+          error: function(error) {
+            console.log("Error in finding drivers for this event.");
+          }
+        });
       }, 
       error: function(error) {
         console.log("Error in finding drivers for this event.");
       }
     });
-
-    riderquery.equalTo('DriverID', userId);
-    riderquery.equalTo('EventID', eID);
-    riderquery.find({
-      success: function(result) {
-        for (var i = 0; i < result.length; i++) {
-          var object = result[i];
-          var rilat = object.get('startLat');
-          var rilng = object.get('startLng');
-          var rilatlng = new google.maps.LatLng(rilat, rilng);
-          pickUps.push(rilatlng);
-          plantMarker(rilatlng); // should draw marker with the user's info like fb picture
-        }
-      }, 
-      error: function(error) {
-        console.log("Error in finding drivers for this event.");
-      }
-    });
-    console.log("hey");
-    eventquery.equalTo('eventID', eventID);
-    eventquery.first({
-        success: function(object){
-            var rilat = object.get('startLat');
-            var rilng = object.get('startLng');
-            var rilatlng = new google.maps.LatLng(rilat, rilng);
-            destination = rilatlng;
-            plantMarker(rilatlng);
-
-            findBestPathFromScratch(driver, pickUps, destination);
-        }
-    });
-    console.log("1");
 
     
-    console.log("2");
-    var paths = [driver].concat(pickUps).push(destination);
-    console.log("3");
+    
 
 
 }
