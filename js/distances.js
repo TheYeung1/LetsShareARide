@@ -116,7 +116,7 @@ function mostEfficientPath(start, pickups, end) {
 }
 
 function findBestPathFromScratch(start, pickups, end) {
-    locationArray = [start].concat(pickups).push(end);
+    locationArray = [start].concat(pickups).concat([end]);
     console.log("location array");
     console.log(locationArray);
     calculateDistances();
