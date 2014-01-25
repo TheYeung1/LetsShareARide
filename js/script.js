@@ -230,8 +230,15 @@ function calcRoute(coordinates, startLoc, endLoc) {
     var renderer = new google.maps.DirectionsRenderer();
     var start = startLoc;
     var end = endLoc;
-    var wypts = coordinates;
+    var wypts = [];
     renderer.setMap(map);
+
+    for (var i = 0; i < coordinates.length; i++) {
+        wypts.push({
+            location: new google.maps.LatLng(coordinates[i].d, coordinates[i].e),
+            stopover: true
+        });
+    }
     var request = {
         origin: start,
         destination: end,
