@@ -22,7 +22,7 @@ $(document).ready(function(){
         var fbEventID = $('#driverSignUpForm select.EventsDropdownForm').val();
         var numSeats = $('#driverSignUpForm input').val();
         var Drivers = Parse.Object.extend('Driver');
-        var query = Parse.Query(Drivers);
+        var query = new Parse.Query(Drivers);
         query.equalTo('eventID', fbEventID);
         query.equalTo('DriverID', Parse.Users.current());
         // check if this user already signed up for this ride, if they did then ya
