@@ -127,7 +127,7 @@ function eventGoerMarkers(eventID){
     });
 }
 
-function plantMarker(latlng) {
+function plantMarker(latlng, content) {
     var marker = new google.maps.Marker({
       position: latlng,
       map: map,

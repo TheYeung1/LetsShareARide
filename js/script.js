@@ -166,7 +166,7 @@ function populate(userId, eventID){
           console.log(drlat + ", " + drlng);
           var drlatlng = new google.maps.LatLng(drlat, drlng);
           driver = drlatlng;
-          plantMarker(drlatlng); // should draw on map with user info
+          //plantMarker(drlatlng); // should draw on map with user info
 
 
 
@@ -180,7 +180,7 @@ function populate(userId, eventID){
               var rilng = object.get('startLng');
               var rilatlng = new google.maps.LatLng(rilat, rilng);
               pickUps.push(rilatlng);
-              plantMarker(rilatlng); // should draw marker with the user's info like fb picture
+              //plantMarker(rilatlng); // should draw marker with the user's info like fb picture
             }
 
             console.log("hey");
@@ -191,7 +191,7 @@ function populate(userId, eventID){
                     var rilng = object.get('startLng');
                     var rilatlng = new google.maps.LatLng(rilat, rilng);
                     destination = rilatlng;
-                    plantMarker(rilatlng);
+                    //plantMarker(rilatlng);
 
                     findBestPathFromScratch(driver, pickUps, destination);
 
@@ -237,6 +237,7 @@ function drawRoute(coordinates, orderOfRoute){
     for (var i = 0; i < orderOfRoute.length - 1; i++) {
         var src = coordinates[orderOfRoute[i]];
         var des = coordinates[orderOfRoute[i + 1]];
+        plantMarker(coordinates[orderOfRoute[i]], '<p>' + i + '</p>');
         path.push(src);
         poly.setPath(path);
         service.route({
