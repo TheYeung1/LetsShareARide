@@ -18,6 +18,7 @@ window.fbAsyncInit = function() {
   });
 
 FB.Event.subscribe('auth.statusChange', function(response) {
+    console.log("statusChange");
     logInFB();
 });
 
