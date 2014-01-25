@@ -202,6 +202,10 @@ function populate(userId, eventID){
         }
     });
     console.log("1");
+    while(!driver || !destination){
+        continue;
+    }
+
     findBestPathFromScratch(driver, pickUps, destination);
     console.log("2");
     var paths = [driver].concat(pickUps).push(destination);
